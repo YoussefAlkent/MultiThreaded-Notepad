@@ -14,7 +14,7 @@ public class EditorApp extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("test.fxml"));
         //loader.setBuilderFactory(t -> (Builder<?>) new EditorController(new EditorModel()));
         Scene scene = new Scene(loader.load(), 320, 240);
         stage.setTitle("Hello!");

@@ -3,13 +3,10 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
-   <bottom>
-      <HBox prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
-   </bottom>
+<BorderPane prefHeight="723.0" prefWidth="913.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -31,4 +28,7 @@
         </menus>
       </MenuBar>
    </top>
+   <center>
+      <TextField fx:id="MainArea" prefHeight="718.0" prefWidth="913.0" style="-fx-alignment: left;" BorderPane.alignment="TOP_LEFT" />
+   </center>
 </BorderPane>
