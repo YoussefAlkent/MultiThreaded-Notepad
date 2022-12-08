@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.util.Builder;
 
 public class EditorApp extends Application {
     public static final String[][] Dictionary = {{}};
@@ -14,6 +15,7 @@ public class EditorApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+        //loader.setBuilderFactory(t -> (Builder<?>) new EditorController(new EditorModel()));
         Scene scene = new Scene(loader.load(), 320, 240);
         stage.setTitle("Hello!");
         stage.setScene(scene);
