@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -22,7 +23,7 @@
     </top>
     <center>
         <AnchorPane>
-            <TextArea fx:id="MainArea" onKeyPressed="#onTextEdit" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <TextArea fx:id="MainArea" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
         </AnchorPane>
     </center>
     <bottom>
@@ -33,7 +34,11 @@
             <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                 <Label fx:id="statusMessage" prefWidth="150.0" text="Checking for Changes..." />
             </HBox>
-            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS" />
+            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+            <children>
+               <Button fx:id="cleanText" mnemonicParsing="false" onAction="#onTextEdit" text="Clean text" />
+            </children>
+            </HBox>
         </HBox>
     </bottom>
 </BorderPane>

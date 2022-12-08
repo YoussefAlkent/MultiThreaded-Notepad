@@ -2,6 +2,8 @@ package com.osstudents.fcse.aiu.project;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
@@ -12,6 +14,8 @@ import java.io.IOException;
 import java.util.*;
 
 public class testController {
+    public Label statusMessage;
+    public Button cleanText;
     private File textFile;
     @FXML
     private TextArea MainArea;
@@ -44,7 +48,7 @@ public class testController {
         writer.flush();
     }
     @FXML
-    private void onTextEdit(KeyEvent event) throws InterruptedException {
+    private void onTextEdit(ActionEvent event) throws InterruptedException {
         if(MainArea.getLength()<7)
             return;
         if(MainArea.getText().charAt(MainArea.getLength()-1) != ' ')
