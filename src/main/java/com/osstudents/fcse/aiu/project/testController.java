@@ -48,7 +48,7 @@ public class testController {
         writer.flush();
     }
     @FXML
-    private void onTextEdit(ActionEvent event) throws InterruptedException {
+    private void onTextEdit(KeyEvent event) throws InterruptedException {
         if(MainArea.getLength()<7)
             return;
         if(MainArea.getText().charAt(MainArea.getLength()-1) != ' ')
@@ -56,22 +56,12 @@ public class testController {
         Thread spaceDetection = new Thread(new Runnable() {
             @Override
             public void run() {
-                ArrayList<Character> fullText = new ArrayList<>();
-                for (int i = 0; i<MainArea.getLength(); i++){
-                    fullText.add(MainArea.getText().charAt(i));
-                }
-                for (int i = 0; i<fullText.size(); i++){
-                    if(fullText.get(i) == ' ' && fullText.get(i+1) == ' '){
-                        int caretPosition = MainArea.getCaretPosition();
-                        fullText.remove(i);
-                        MainArea.positionCaret(caretPosition);
-                    }
-                }
-                String finalString = "";
-                for (int i = 0; i< fullText.size(); i++){
-                    finalString += fullText.get(i);
-                }
-                MainArea.setText(finalString);
+                String fullText = MainArea.getText();
+                int caretPosition = MainArea.getCaretPosition();
+                fullText=fullText.replaceAll("[ ]{1,}", " ");
+                MainArea.setText(fullText);
+                MainArea.positionCaret(caretPosition);
+
             }
         });
         spaceDetection.start();
@@ -79,15 +69,27 @@ public class testController {
         Thread wordCorrection = new Thread(new Runnable() {
             @Override
             public void run() {
-                String[] ArrayPass = MainArea.getText().split(" ");
+                String[] ArrayPass = MainArea.getText().split("[ ]");
                 String[][] Dictionary = EditorApp.getDic();
-                for (int i =0; i<ArrayPass.length; i++){
+//                for (int i =0; i<ArrayPass.length; i++){
+//                    for(int j = 0; j<Dictionary.length; j++){
+//                        if(ArrayPass[i].equals(Dictionary[j][0])){
+//                            ArrayPass[i] = Dictionary[j][1];
+//                        }
+//                    }
+//                }
+                for(int i = 0; i<ArrayPass.length; i++){
                     for(int j = 0; j<Dictionary.length; j++){
-                        if(ArrayPass[i].equals(Dictionary[j][0])){
-                            ArrayPass[i] = Dictionary[j][1];
+                        if(ArrayPass[i].equals(Dictionary[i][0])){
+                                ArrayPass[i] = Dictionary[i][1];
                         }
                     }
                 }
+                String fixedText = "";
+                for(int i = 0; i<ArrayPass.length; i++){
+                    fixedText+=ArrayPass[i];
+                }
+                MainArea.setText(fixedText);
             }
         });
         wordCorrection.start();

@@ -7,8 +7,22 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Builder;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Dictionary;
+import java.util.Scanner;
+
 public class EditorApp extends Application {
-    public static final String[][] Dictionary = {{}};
+    public static String[][] Dictionary = new String[90][2];
+    private static void initDictionary() throws FileNotFoundException {
+        File file = new File("dictionary.txt");
+        Scanner fileReader = new Scanner(file);
+        int i = 0;
+        while(fileReader.hasNext()){
+            Dictionary[i] = fileReader.nextLine().split(" - ");
+            i++;
+        }
+    }
     public static String[][] getDic(){
         return Dictionary;
     }

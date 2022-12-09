@@ -23,7 +23,7 @@
     </top>
     <center>
         <AnchorPane>
-            <TextArea fx:id="MainArea" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <TextArea fx:id="MainArea" onKeyPressed="#onTextEdit" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
         </AnchorPane>
     </center>
     <bottom>
@@ -36,7 +36,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
             <children>
-               <Button fx:id="cleanText" mnemonicParsing="false" onAction="#onTextEdit" text="Clean text" />
+               <Button fx:id="cleanText" mnemonicParsing="false" text="Clean text" />
             </children>
             </HBox>
         </HBox>
