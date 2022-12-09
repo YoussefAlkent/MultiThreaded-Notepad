@@ -49,16 +49,12 @@ public class testController {
     }
     @FXML
     private void onTextEdit(KeyEvent event) throws InterruptedException {
-        if(MainArea.getLength()<7)
-            return;
-        if(MainArea.getText().charAt(MainArea.getLength()-1) != ' ')
-            return;
         Thread spaceDetection = new Thread(new Runnable() {
             @Override
             public void run() {
                 String fullText = MainArea.getText();
                 int caretPosition = MainArea.getCaretPosition();
-                fullText=fullText.replaceAll("[ ]{1,}", " ");
+                fullText=fullText.replaceAll("[ ]{2,}", " ");
                 MainArea.setText(fullText);
                 MainArea.positionCaret(caretPosition);
 
@@ -69,19 +65,17 @@ public class testController {
         Thread wordCorrection = new Thread(new Runnable() {
             @Override
             public void run() {
-                String[] ArrayPass = MainArea.getText().split("[ ]");
+                int caretPos = MainArea.getCaretPosition();
+                String[] ArrayPass = MainArea.getText().split(" ");
                 String[][] Dictionary = EditorApp.getDic();
-//                for (int i =0; i<ArrayPass.length; i++){
-//                    for(int j = 0; j<Dictionary.length; j++){
-//                        if(ArrayPass[i].equals(Dictionary[j][0])){
-//                            ArrayPass[i] = Dictionary[j][1];
-//                        }
-//                    }
-//                }
                 for(int i = 0; i<ArrayPass.length; i++){
                     for(int j = 0; j<Dictionary.length; j++){
-                        if(ArrayPass[i].equals(Dictionary[i][0])){
-                                ArrayPass[i] = Dictionary[i][1];
+                        System.out.println(ArrayPass[i]);
+                        System.out.println(ArrayPass[i].equals(Dictionary[i][0]));
+                        if (ArrayPass[i].equals(Dictionary[i][0])) {
+                            System.out.println(ArrayPass[i].equals(Dictionary[i][0]));
+                            ArrayPass[i] = Dictionary[i][1];
+                            break;
                         }
                     }
                 }
@@ -90,9 +84,11 @@ public class testController {
                     fixedText+=ArrayPass[i];
                 }
                 MainArea.setText(fixedText);
+                MainArea.positionCaret(caretPos);
             }
         });
         wordCorrection.start();
+        wordCorrection.join();
 
     }
 

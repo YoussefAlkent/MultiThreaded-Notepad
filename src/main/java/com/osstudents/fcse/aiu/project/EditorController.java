@@ -6,11 +6,6 @@ import javafx.scene.control.TextArea;
 public  class EditorController {
     @FXML
     private TextArea areaText;
-    private EditorModel model;
-    public EditorController(EditorModel model){
-        this.model=model;
-    }
-
     @FXML
     private void onSave() {
 
